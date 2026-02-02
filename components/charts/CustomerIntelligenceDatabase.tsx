@@ -5,187 +5,331 @@ import { ChevronDown, ChevronUp } from 'lucide-react'
 
 interface CustomerData {
   // Customer Information
-  sNo: number
-  customerPlantOrganizationName: string
-  parentGroupHoldingCompany: string
-  country: string
-  cityIndustrialCluster: string
-  endUseIndustry: string
+  customerNameCompanyName: string
+  typeOfBusiness: string
+  primaryFoodProductType: string
   facilityType: string
-  // Product/Door Information
-  primaryDoorType: string
-  automationLevel: string
-  material: string
-  installedIndustrialDoorBase: string
+  installedSortingCapacity: string
+  numberOfSortingLines: number
   // Contact Details
   keyContactPerson: string
-  designation: string
+  designationRole: string
   emailAddress: string
-  phoneNumber: string
+  phoneWhatsAppNumber: string
   linkedInProfile: string
   websiteUrl: string
-  // Needs & Pain Points
-  primaryNeedFocus: string
-  keyProductNeeds: string
-  keyServiceNeeds: string
-  // Purchasing Behaviour (for Proposition 3)
-  decisionMakers: string
-  currentSupplierSetup: string
-  currentMaintenanceModel: string
-  // Opportunity & Project Status (for Proposition 3)
-  priorityLevel: string
-  expectedOpportunitySize: string
-  plannedProjects: string
+  // Procurement & Purchase Metrics (for Proposition 2 & 3)
+  annualSortingMachineProcurementBudget: string
+  preferredEquipmentModel: string
+  averageProcurementLeadTime: string
+  replacementCycleOfMachinery: string
+  // Digital & Technology Adoption Metrics (for Proposition 3)
+  levelOfAutomation: string
+  aiOrMachineVisionAdoption: string
+  roboticsAdoptionLevel: string
+  predictiveMaintenanceTools: string
+  remoteMonitoringCapability: string
+  // Future Demand & Expansion Metrics (for Proposition 3)
+  plannedCapacityExpansion: string
+  expectedNewEquipmentPurchases: string
+  newProductLaunchPlans: string
+  newFacilityConstruction: string
   // CMI Insights (for Proposition 3)
   customerBenchmarkingSummary: string
+  additionalComments: string
 }
 
-// Sample data for Industrial Door Industry
+// Sample data - Replace with your actual data
 const sampleCustomerData: CustomerData[] = [
   {
-    sNo: 1,
-    customerPlantOrganizationName: 'Tata Steel - Jamshedpur Plant',
-    parentGroupHoldingCompany: 'Tata Group',
-    country: 'India',
-    cityIndustrialCluster: 'Jamshedpur Industrial Zone',
-    endUseIndustry: 'Steel Manufacturing',
-    facilityType: 'Manufacturing Plant',
-    primaryDoorType: 'High-Speed Rolling Doors',
-    automationLevel: 'Fully Automated',
-    material: 'Steel with Insulated Panels',
-    installedIndustrialDoorBase: '45 doors / 12 bays / 4m x 5m',
-    keyContactPerson: 'Rajesh Kumar',
-    designation: 'Plant Manager - Facilities',
-    emailAddress: 'r.kumar@tatasteel.com',
-    phoneNumber: '+91 98765 43210',
-    linkedInProfile: 'linkedin.com/in/rajeshkumar-tata',
-    websiteUrl: 'www.tatasteel.com',
-    primaryNeedFocus: 'Products',
-    keyProductNeeds: 'High-speed doors, insulation, safety sensors',
-    keyServiceNeeds: 'Installation, AMC, emergency repair',
-    decisionMakers: 'Plant Manager, Maintenance Head, Procurement',
-    currentSupplierSetup: 'OEM / Multi-vendor',
-    currentMaintenanceModel: 'Mixed',
-    priorityLevel: 'High',
-    expectedOpportunitySize: 'Large (₹50L+)',
-    plannedProjects: 'Plant expansion, Safety compliance retrofit',
-    customerBenchmarkingSummary: 'High potential - Strategic account'
+    customerNameCompanyName: 'ABC Fresh Produce Ltd',
+    typeOfBusiness: 'Food Processor',
+    primaryFoodProductType: 'Fruits & Vegetables',
+    facilityType: 'Processing Plant',
+    installedSortingCapacity: '10 tons/hour',
+    numberOfSortingLines: 3,
+    keyContactPerson: 'John Smith',
+    designationRole: 'Operations Manager',
+    emailAddress: 'john.smith@abcfresh.com',
+    phoneWhatsAppNumber: '+1 234-567-8900',
+    linkedInProfile: 'linkedin.com/in/johnsmith',
+    websiteUrl: 'www.abcfresh.com',
+    annualSortingMachineProcurementBudget: '$500,000',
+    preferredEquipmentModel: 'OEM Direct',
+    averageProcurementLeadTime: '12 weeks',
+    replacementCycleOfMachinery: '5 years',
+    levelOfAutomation: 'Semi Automatic',
+    aiOrMachineVisionAdoption: 'Yes',
+    roboticsAdoptionLevel: 'Medium',
+    predictiveMaintenanceTools: 'Low',
+    remoteMonitoringCapability: 'Yes',
+    plannedCapacityExpansion: '25%',
+    expectedNewEquipmentPurchases: '2 new sorting lines',
+    newProductLaunchPlans: 'Premium organic line',
+    newFacilityConstruction: 'Yes',
+    customerBenchmarkingSummary: 'High potential customer',
+    additionalComments: 'Follow up in Q2 2024'
   },
   {
-    sNo: 2,
-    customerPlantOrganizationName: 'Amazon Fulfillment Center',
-    parentGroupHoldingCompany: 'Amazon Inc.',
-    country: 'India',
-    cityIndustrialCluster: 'Bhiwandi Logistics Hub',
-    endUseIndustry: 'E-commerce & Logistics',
-    facilityType: 'Warehouse / Distribution Center',
-    primaryDoorType: 'Dock Levelers & Sectional Doors',
-    automationLevel: 'Semi-Automated',
-    material: 'Insulated Steel Panels',
-    installedIndustrialDoorBase: '120 doors / 48 bays / 3m x 4m',
-    keyContactPerson: 'Priya Sharma',
-    designation: 'Operations Manager',
-    emailAddress: 'p.sharma@amazon.com',
-    phoneNumber: '+91 98234 56789',
-    linkedInProfile: 'linkedin.com/in/priyasharma-amazon',
-    websiteUrl: 'www.amazon.in',
-    primaryNeedFocus: 'Both',
-    keyProductNeeds: 'Dock doors, loading bay equipment, seals',
-    keyServiceNeeds: 'Installation, maintenance, AMC, rapid repair',
-    decisionMakers: 'Operations Manager, Facility Manager, Procurement',
-    currentSupplierSetup: 'Multi-vendor / EPC',
-    currentMaintenanceModel: 'Outsourced',
-    priorityLevel: 'High',
-    expectedOpportunitySize: 'Large (₹75L+)',
-    plannedProjects: 'New fulfillment center, Automation upgrade',
-    customerBenchmarkingSummary: 'High potential - Large fleet'
+    customerNameCompanyName: 'Global Grains Co',
+    typeOfBusiness: 'Agribusiness Operator',
+    primaryFoodProductType: 'Grains & Pulses',
+    facilityType: 'Sorting Center',
+    installedSortingCapacity: '15 tons/hour',
+    numberOfSortingLines: 5,
+    keyContactPerson: 'Sarah Johnson',
+    designationRole: 'Plant Manager',
+    emailAddress: 's.johnson@globalgrains.com',
+    phoneWhatsAppNumber: '+1 345-678-9012',
+    linkedInProfile: 'linkedin.com/in/sarahjohnson',
+    websiteUrl: 'www.globalgrains.com',
+    annualSortingMachineProcurementBudget: '$750,000',
+    preferredEquipmentModel: 'Distributor',
+    averageProcurementLeadTime: '10 weeks',
+    replacementCycleOfMachinery: '7 years',
+    levelOfAutomation: 'Automatic',
+    aiOrMachineVisionAdoption: 'Yes',
+    roboticsAdoptionLevel: 'High',
+    predictiveMaintenanceTools: 'Medium',
+    remoteMonitoringCapability: 'Yes',
+    plannedCapacityExpansion: '30%',
+    expectedNewEquipmentPurchases: '3 new optical sorters',
+    newProductLaunchPlans: 'Organic pulse line',
+    newFacilityConstruction: 'No',
+    customerBenchmarkingSummary: 'Strategic account',
+    additionalComments: 'Interested in AI-powered sorting'
   },
   {
-    sNo: 3,
-    customerPlantOrganizationName: 'Nestle India - Nanjangud Factory',
-    parentGroupHoldingCompany: 'Nestle S.A.',
-    country: 'India',
-    cityIndustrialCluster: 'Nanjangud Food Processing Zone',
-    endUseIndustry: 'Food & Beverage',
-    facilityType: 'Food Processing Plant',
-    primaryDoorType: 'Hygienic High-Speed Doors',
-    automationLevel: 'Fully Automated',
-    material: 'Stainless Steel / PVC',
-    installedIndustrialDoorBase: '65 doors / 20 bays / 2.5m x 3m',
-    keyContactPerson: 'Amit Verma',
-    designation: 'Engineering Head',
-    emailAddress: 'a.verma@nestle.com',
-    phoneNumber: '+91 99887 65432',
-    linkedInProfile: 'linkedin.com/in/amitverma-nestle',
-    websiteUrl: 'www.nestle.in',
-    primaryNeedFocus: 'Products',
-    keyProductNeeds: 'Hygienic doors, clean room doors, air curtains',
-    keyServiceNeeds: 'Installation, scheduled maintenance, retrofit',
-    decisionMakers: 'Engineering Head, Quality Manager, Procurement',
-    currentSupplierSetup: 'OEM / Dealers',
-    currentMaintenanceModel: 'In-house',
-    priorityLevel: 'Medium',
-    expectedOpportunitySize: 'Medium (₹25-50L)',
-    plannedProjects: 'Compliance upgrade, Capacity expansion',
-    customerBenchmarkingSummary: 'High potential - Premium segment'
+    customerNameCompanyName: 'Premium Nuts Ltd',
+    typeOfBusiness: 'Food Processor',
+    primaryFoodProductType: 'Nuts & Dates',
+    facilityType: 'Processing Plant',
+    installedSortingCapacity: '5 tons/hour',
+    numberOfSortingLines: 2,
+    keyContactPerson: 'Michael Chen',
+    designationRole: 'Technical Director',
+    emailAddress: 'm.chen@premiumnuts.com',
+    phoneWhatsAppNumber: '+1 456-789-0123',
+    linkedInProfile: 'linkedin.com/in/michaelchen',
+    websiteUrl: 'www.premiumnuts.com',
+    annualSortingMachineProcurementBudget: '$300,000',
+    preferredEquipmentModel: 'OEM Direct',
+    averageProcurementLeadTime: '14 weeks',
+    replacementCycleOfMachinery: '6 years',
+    levelOfAutomation: 'Semi Automatic',
+    aiOrMachineVisionAdoption: 'No',
+    roboticsAdoptionLevel: 'Low',
+    predictiveMaintenanceTools: 'Low',
+    remoteMonitoringCapability: 'No',
+    plannedCapacityExpansion: '15%',
+    expectedNewEquipmentPurchases: '1 color sorter',
+    newProductLaunchPlans: 'Premium almond range',
+    newFacilityConstruction: 'Yes',
+    customerBenchmarkingSummary: 'Medium potential',
+    additionalComments: 'Budget constraints in 2024'
   },
   {
-    sNo: 4,
-    customerPlantOrganizationName: 'Maruti Suzuki - Manesar Plant',
-    parentGroupHoldingCompany: 'Suzuki Motor Corporation',
-    country: 'India',
-    cityIndustrialCluster: 'Manesar Automotive Hub',
-    endUseIndustry: 'Automotive Manufacturing',
-    facilityType: 'Assembly Plant',
-    primaryDoorType: 'High-Speed & Sectional Doors',
-    automationLevel: 'Fully Automated',
-    material: 'Galvanized Steel',
-    installedIndustrialDoorBase: '200 doors / 60 bays / Various sizes',
-    keyContactPerson: 'Suresh Nair',
-    designation: 'VP - Plant Engineering',
-    emailAddress: 's.nair@maruti.co.in',
-    phoneNumber: '+91 98102 34567',
-    linkedInProfile: 'linkedin.com/in/sureshnair-maruti',
-    websiteUrl: 'www.marutisuzuki.com',
-    primaryNeedFocus: 'Both',
-    keyProductNeeds: 'Paint booth doors, assembly line doors, safety doors',
-    keyServiceNeeds: 'AMC, emergency repair, retrofit, installation',
-    decisionMakers: 'VP Engineering, Maintenance Head, Central Procurement',
-    currentSupplierSetup: 'OEM / Multi-vendor',
-    currentMaintenanceModel: 'Mixed',
-    priorityLevel: 'High',
-    expectedOpportunitySize: 'Large (₹1Cr+)',
-    plannedProjects: 'New model line, Automation upgrade',
-    customerBenchmarkingSummary: 'High potential - Strategic'
+    customerNameCompanyName: 'FreshPack Solutions',
+    typeOfBusiness: 'Packager',
+    primaryFoodProductType: 'Fruits & Vegetables',
+    facilityType: 'Packaging Center',
+    installedSortingCapacity: '8 tons/hour',
+    numberOfSortingLines: 4,
+    keyContactPerson: 'Emily Rodriguez',
+    designationRole: 'Production Head',
+    emailAddress: 'e.rodriguez@freshpack.com',
+    phoneWhatsAppNumber: '+1 567-890-1234',
+    linkedInProfile: 'linkedin.com/in/emilyrodriguez',
+    websiteUrl: 'www.freshpack.com',
+    annualSortingMachineProcurementBudget: '$450,000',
+    preferredEquipmentModel: 'Specialist',
+    averageProcurementLeadTime: '16 weeks',
+    replacementCycleOfMachinery: '5 years',
+    levelOfAutomation: 'Automatic',
+    aiOrMachineVisionAdoption: 'Yes',
+    roboticsAdoptionLevel: 'Medium',
+    predictiveMaintenanceTools: 'High',
+    remoteMonitoringCapability: 'Yes',
+    plannedCapacityExpansion: '20%',
+    expectedNewEquipmentPurchases: 'Automated packaging line',
+    newProductLaunchPlans: 'Ready-to-eat salads',
+    newFacilityConstruction: 'No',
+    customerBenchmarkingSummary: 'High potential',
+    additionalComments: 'Looking for turnkey solutions'
   },
   {
-    sNo: 5,
-    customerPlantOrganizationName: 'DHL Supply Chain - Cold Storage',
-    parentGroupHoldingCompany: 'Deutsche Post DHL Group',
-    country: 'India',
-    cityIndustrialCluster: 'Pune Logistics Park',
-    endUseIndustry: 'Cold Chain Logistics',
-    facilityType: 'Cold Storage Facility',
-    primaryDoorType: 'Cold Room Doors & Air Curtains',
-    automationLevel: 'Semi-Automated',
-    material: 'Insulated Panels / PU Core',
-    installedIndustrialDoorBase: '35 doors / 15 bays / 2m x 3m',
-    keyContactPerson: 'Ankit Jain',
-    designation: 'Facility Manager',
-    emailAddress: 'a.jain@dhl.com',
-    phoneNumber: '+91 97654 32109',
-    linkedInProfile: 'linkedin.com/in/ankitjain-dhl',
-    websiteUrl: 'www.dhl.com',
-    primaryNeedFocus: 'Services',
-    keyProductNeeds: 'Cold room doors, strip curtains, seals',
-    keyServiceNeeds: 'Maintenance, emergency repair, AMC',
-    decisionMakers: 'Facility Manager, Operations Head, Procurement',
-    currentSupplierSetup: 'Dealers / EPC',
-    currentMaintenanceModel: 'Outsourced',
-    priorityLevel: 'Medium',
-    expectedOpportunitySize: 'Medium (₹20-40L)',
-    plannedProjects: 'Cold chain expansion, Retrofit',
-    customerBenchmarkingSummary: 'High potential - Growing segment'
+    customerNameCompanyName: 'AgriDistribute Network',
+    typeOfBusiness: 'Distributor',
+    primaryFoodProductType: 'Grains & Pulses',
+    facilityType: 'Sorting Center',
+    installedSortingCapacity: '20 tons/hour',
+    numberOfSortingLines: 6,
+    keyContactPerson: 'David Martinez',
+    designationRole: 'CEO',
+    emailAddress: 'd.martinez@agridistribute.com',
+    phoneWhatsAppNumber: '+1 678-901-2345',
+    linkedInProfile: 'linkedin.com/in/davidmartinez',
+    websiteUrl: 'www.agridistribute.com',
+    annualSortingMachineProcurementBudget: '$1,200,000',
+    preferredEquipmentModel: 'OEM Direct',
+    averageProcurementLeadTime: '8 weeks',
+    replacementCycleOfMachinery: '8 years',
+    levelOfAutomation: 'Automatic',
+    aiOrMachineVisionAdoption: 'Yes',
+    roboticsAdoptionLevel: 'High',
+    predictiveMaintenanceTools: 'High',
+    remoteMonitoringCapability: 'Yes',
+    plannedCapacityExpansion: '40%',
+    expectedNewEquipmentPurchases: '4 high-speed sorters',
+    newProductLaunchPlans: 'Quinoa and specialty grains',
+    newFacilityConstruction: 'Yes',
+    customerBenchmarkingSummary: 'Key strategic partner',
+    additionalComments: 'Priority account - Q1 expansion'
+  },
+  {
+    customerNameCompanyName: 'Organic Harvest Inc',
+    typeOfBusiness: 'Food Processor',
+    primaryFoodProductType: 'Fruits & Vegetables',
+    facilityType: 'Processing Plant',
+    installedSortingCapacity: '12 tons/hour',
+    numberOfSortingLines: 4,
+    keyContactPerson: 'Lisa Anderson',
+    designationRole: 'Quality Manager',
+    emailAddress: 'l.anderson@organicharvest.com',
+    phoneWhatsAppNumber: '+1 789-012-3456',
+    linkedInProfile: 'linkedin.com/in/lisaanderson',
+    websiteUrl: 'www.organicharvest.com',
+    annualSortingMachineProcurementBudget: '$600,000',
+    preferredEquipmentModel: 'Distributor',
+    averageProcurementLeadTime: '11 weeks',
+    replacementCycleOfMachinery: '6 years',
+    levelOfAutomation: 'Semi Automatic',
+    aiOrMachineVisionAdoption: 'Yes',
+    roboticsAdoptionLevel: 'Medium',
+    predictiveMaintenanceTools: 'Medium',
+    remoteMonitoringCapability: 'No',
+    plannedCapacityExpansion: '35%',
+    expectedNewEquipmentPurchases: '2 optical sorters',
+    newProductLaunchPlans: 'Frozen organic vegetables',
+    newFacilityConstruction: 'Yes',
+    customerBenchmarkingSummary: 'Growing segment leader',
+    additionalComments: 'Sustainability focus'
+  },
+  {
+    customerNameCompanyName: 'DatePro Middle East',
+    typeOfBusiness: 'Food Processor',
+    primaryFoodProductType: 'Nuts & Dates',
+    facilityType: 'Processing Plant',
+    installedSortingCapacity: '7 tons/hour',
+    numberOfSortingLines: 3,
+    keyContactPerson: 'Ahmed Al-Rashid',
+    designationRole: 'Operations Director',
+    emailAddress: 'a.alrashid@datepro.ae',
+    phoneWhatsAppNumber: '+971 50-123-4567',
+    linkedInProfile: 'linkedin.com/in/ahmedalrashid',
+    websiteUrl: 'www.datepro.ae',
+    annualSortingMachineProcurementBudget: '$400,000',
+    preferredEquipmentModel: 'OEM Direct',
+    averageProcurementLeadTime: '15 weeks',
+    replacementCycleOfMachinery: '7 years',
+    levelOfAutomation: 'Automatic',
+    aiOrMachineVisionAdoption: 'Yes',
+    roboticsAdoptionLevel: 'High',
+    predictiveMaintenanceTools: 'Medium',
+    remoteMonitoringCapability: 'Yes',
+    plannedCapacityExpansion: '50%',
+    expectedNewEquipmentPurchases: '3 date grading systems',
+    newProductLaunchPlans: 'Premium Medjool dates',
+    newFacilityConstruction: 'No',
+    customerBenchmarkingSummary: 'Regional market leader',
+    additionalComments: 'Expanding export capacity'
+  },
+  {
+    customerNameCompanyName: 'VeggieWorks Corp',
+    typeOfBusiness: 'Agribusiness Operator',
+    primaryFoodProductType: 'Fruits & Vegetables',
+    facilityType: 'Sorting Center',
+    installedSortingCapacity: '18 tons/hour',
+    numberOfSortingLines: 7,
+    keyContactPerson: 'Robert Taylor',
+    designationRole: 'VP Operations',
+    emailAddress: 'r.taylor@veggieworks.com',
+    phoneWhatsAppNumber: '+1 890-123-4567',
+    linkedInProfile: 'linkedin.com/in/roberttaylor',
+    websiteUrl: 'www.veggieworks.com',
+    annualSortingMachineProcurementBudget: '$900,000',
+    preferredEquipmentModel: 'Specialist',
+    averageProcurementLeadTime: '9 weeks',
+    replacementCycleOfMachinery: '5 years',
+    levelOfAutomation: 'Automatic',
+    aiOrMachineVisionAdoption: 'Yes',
+    roboticsAdoptionLevel: 'High',
+    predictiveMaintenanceTools: 'High',
+    remoteMonitoringCapability: 'Yes',
+    plannedCapacityExpansion: '45%',
+    expectedNewEquipmentPurchases: '5 AI vision sorters',
+    newProductLaunchPlans: 'Exotic vegetables, snack packs',
+    newFacilityConstruction: 'Yes',
+    customerBenchmarkingSummary: 'Innovation leader',
+    additionalComments: 'Technology partnership opportunity'
+  },
+  {
+    customerNameCompanyName: 'GrainMaster Foods',
+    typeOfBusiness: 'Food Processor',
+    primaryFoodProductType: 'Grains & Pulses',
+    facilityType: 'Processing Plant',
+    installedSortingCapacity: '25 tons/hour',
+    numberOfSortingLines: 8,
+    keyContactPerson: 'Jennifer Lee',
+    designationRole: 'Plant Manager',
+    emailAddress: 'j.lee@grainmaster.com',
+    phoneWhatsAppNumber: '+1 901-234-5678',
+    linkedInProfile: 'linkedin.com/in/jenniferlee',
+    websiteUrl: 'www.grainmaster.com',
+    annualSortingMachineProcurementBudget: '$1,500,000',
+    preferredEquipmentModel: 'OEM Direct',
+    averageProcurementLeadTime: '7 weeks',
+    replacementCycleOfMachinery: '8 years',
+    levelOfAutomation: 'Automatic',
+    aiOrMachineVisionAdoption: 'Yes',
+    roboticsAdoptionLevel: 'High',
+    predictiveMaintenanceTools: 'High',
+    remoteMonitoringCapability: 'Yes',
+    plannedCapacityExpansion: '60%',
+    expectedNewEquipmentPurchases: '6 multi-channel sorters',
+    newProductLaunchPlans: 'Ancient grains, protein-rich',
+    newFacilityConstruction: 'Yes',
+    customerBenchmarkingSummary: 'Tier 1 customer',
+    additionalComments: 'Largest facility expansion in region'
+  },
+  {
+    customerNameCompanyName: 'NutriPack Industries',
+    typeOfBusiness: 'Packager',
+    primaryFoodProductType: 'Nuts & Dates',
+    facilityType: 'Packaging Center',
+    installedSortingCapacity: '6 tons/hour',
+    numberOfSortingLines: 2,
+    keyContactPerson: 'Carlos Mendez',
+    designationRole: 'Facility Manager',
+    emailAddress: 'c.mendez@nutripack.com',
+    phoneWhatsAppNumber: '+1 012-345-6789',
+    linkedInProfile: 'linkedin.com/in/carlosmendez',
+    websiteUrl: 'www.nutripack.com',
+    annualSortingMachineProcurementBudget: '$250,000',
+    preferredEquipmentModel: 'Distributor',
+    averageProcurementLeadTime: '13 weeks',
+    replacementCycleOfMachinery: '6 years',
+    levelOfAutomation: 'Manual',
+    aiOrMachineVisionAdoption: 'No',
+    roboticsAdoptionLevel: 'Low',
+    predictiveMaintenanceTools: 'Low',
+    remoteMonitoringCapability: 'No',
+    plannedCapacityExpansion: '10%',
+    expectedNewEquipmentPurchases: '1 basic sorter',
+    newProductLaunchPlans: 'Trail mix varieties',
+    newFacilityConstruction: 'No',
+    customerBenchmarkingSummary: 'Growth potential',
+    additionalComments: 'Entry-level automation interest'
   }
 ]
 
@@ -231,13 +375,13 @@ export default function CustomerIntelligenceDatabase({ title }: CustomerIntellig
     setOpenPreposition(openPreposition === num ? null : num)
   }
 
-  // Preposition 1 Table - Customer Information + Contact Details
+  // Proposition 1 Table - Customer Information + Contact Details
   const renderPreposition1Table = () => (
     <div className="overflow-x-auto">
       <table className="min-w-full border-collapse">
         <thead>
           <tr>
-            <th colSpan={7} className="bg-[#E8C4A0] border border-gray-300 px-3 py-2 text-center text-sm font-semibold text-black">
+            <th colSpan={6} className="bg-[#E8C4A0] border border-gray-300 px-3 py-2 text-center text-sm font-semibold text-black">
               Customer Information
             </th>
             <th colSpan={6} className="bg-[#87CEEB] border border-gray-300 px-3 py-2 text-center text-sm font-semibold text-black">
@@ -246,54 +390,54 @@ export default function CustomerIntelligenceDatabase({ title }: CustomerIntellig
           </tr>
           <tr className="bg-gray-100">
             {/* Customer Information */}
-            <th className="bg-[#FFF8DC] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[60px]">
-              S.No.
+            <th className="bg-[#FFF8DC] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[180px]">
+              Customer Name/Company Name
             </th>
             <th className="bg-[#FFF8DC] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[180px]">
-              Customer / Plant / Organization Name
+              <div>Type of Business</div>
+              <div className="font-normal text-[10px] text-gray-600">(Food Processor, Agribusiness Operator, Packager, Distributor, Company)</div>
+            </th>
+            <th className="bg-[#FFF8DC] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[180px]">
+              <div>Primary Food Product Type</div>
+              <div className="font-normal text-[10px] text-gray-600">(Fruits & Vegetables, Grains & Pulses, Nuts & Dates)</div>
+            </th>
+            <th className="bg-[#FFF8DC] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[180px]">
+              <div>Facility Type</div>
+              <div className="font-normal text-[10px] text-gray-600">(Processing Plant, Sorting Center, Packaging Center, Packaging Center)</div>
             </th>
             <th className="bg-[#FFF8DC] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[150px]">
-              Parent Group / Holding Company
-            </th>
-            <th className="bg-[#FFF8DC] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[100px]">
-              Country
+              <div>Installed Sorting Capacity</div>
+              <div className="font-normal text-[10px] text-gray-600">(Tons per Hour)</div>
             </th>
             <th className="bg-[#FFF8DC] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[150px]">
-              City / Industrial Cluster
-            </th>
-            <th className="bg-[#FFF8DC] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[150px]">
-              End-use Industry
-            </th>
-            <th className="bg-[#FFF8DC] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[130px]">
-              Facility Type
+              Number of Sorting Lines
             </th>
             {/* Contact Details */}
-            <th className="bg-[#B0E0E6] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black whitespace-nowrap min-w-[130px]">Key Contact Person</th>
-            <th className="bg-[#B0E0E6] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black whitespace-nowrap min-w-[150px]">Designation / Department</th>
-            <th className="bg-[#B0E0E6] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black whitespace-nowrap min-w-[150px]">Email Address</th>
-            <th className="bg-[#B0E0E6] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black whitespace-nowrap min-w-[140px]">Phone/ WhatsApp Number</th>
-            <th className="bg-[#B0E0E6] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black whitespace-nowrap min-w-[150px]">LinkedIn Profile</th>
-            <th className="bg-[#B0E0E6] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black whitespace-nowrap min-w-[130px]">Website URL</th>
+            <th className="bg-[#B0E0E6] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[130px]">Key Contact Person</th>
+            <th className="bg-[#B0E0E6] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[150px]">Designation/Role</th>
+            <th className="bg-[#B0E0E6] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[150px]">Email Address</th>
+            <th className="bg-[#B0E0E6] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[140px]">Phone/Whats App Number</th>
+            <th className="bg-[#B0E0E6] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[150px]">LinkedIn Profile</th>
+            <th className="bg-[#B0E0E6] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[130px]">Website URL</th>
           </tr>
         </thead>
         <tbody>
           {sampleCustomerData.map((customer, index) => (
             <tr key={index} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
               {/* Customer Information */}
-              <td className="border border-gray-300 px-3 py-2 text-sm text-black text-center">{customer.sNo}</td>
-              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.customerPlantOrganizationName}</td>
-              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.parentGroupHoldingCompany}</td>
-              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.country}</td>
-              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.cityIndustrialCluster}</td>
-              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.endUseIndustry}</td>
+              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.customerNameCompanyName}</td>
+              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.typeOfBusiness}</td>
+              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.primaryFoodProductType}</td>
               <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.facilityType}</td>
+              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.installedSortingCapacity}</td>
+              <td className="border border-gray-300 px-3 py-2 text-sm text-black text-center">{customer.numberOfSortingLines}</td>
               {/* Contact Details */}
               <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.keyContactPerson}</td>
-              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.designation}</td>
+              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.designationRole}</td>
               <td className="border border-gray-300 px-3 py-2 text-sm text-blue-600 hover:underline">
                 <a href={`mailto:${customer.emailAddress}`}>{customer.emailAddress}</a>
               </td>
-              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.phoneNumber}</td>
+              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.phoneWhatsAppNumber}</td>
               <td className="border border-gray-300 px-3 py-2 text-sm text-blue-600 hover:underline">
                 <a href={`https://${customer.linkedInProfile}`} target="_blank" rel="noopener noreferrer">{customer.linkedInProfile}</a>
               </td>
@@ -307,50 +451,66 @@ export default function CustomerIntelligenceDatabase({ title }: CustomerIntellig
     </div>
   )
 
-  // Preposition 2 Table - Customer Information + Contact Details + Needs & Pain Points
+  // Proposition 2 Table - Customer Information + Contact Details + Procurement & Purchase Metrics
   const renderPreposition2Table = () => (
     <div className="overflow-x-auto">
       <table className="min-w-full border-collapse">
         <thead>
           <tr>
-            <th colSpan={7} className="bg-[#E8C4A0] border border-gray-300 px-3 py-2 text-center text-sm font-semibold text-black">
+            <th colSpan={6} className="bg-[#E8C4A0] border border-gray-300 px-3 py-2 text-center text-sm font-semibold text-black">
               Customer Information
             </th>
             <th colSpan={6} className="bg-[#87CEEB] border border-gray-300 px-3 py-2 text-center text-sm font-semibold text-black">
               Contact Details
             </th>
-            <th colSpan={3} className="bg-[#87CEEB] border border-gray-300 px-3 py-2 text-center text-sm font-semibold text-black">
-              Needs & Pain Points
+            <th colSpan={4} className="bg-[#E8E4C9] border border-gray-300 px-3 py-2 text-center text-sm font-semibold text-black">
+              Procurement & Purchase Metrics
             </th>
           </tr>
           <tr className="bg-gray-100">
             {/* Customer Information */}
-            <th className="bg-[#FFF8DC] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[60px]">S.No.</th>
-            <th className="bg-[#FFF8DC] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[180px]">Customer / Plant / Organization Name</th>
-            <th className="bg-[#FFF8DC] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[150px]">Parent Group / Holding Company</th>
-            <th className="bg-[#FFF8DC] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[100px]">Country</th>
-            <th className="bg-[#FFF8DC] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[150px]">City / Industrial Cluster</th>
-            <th className="bg-[#FFF8DC] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[150px]">End-use Industry</th>
-            <th className="bg-[#FFF8DC] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[130px]">Facility Type</th>
+            <th className="bg-[#FFF8DC] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[180px]">
+              Customer Name/Company Name
+            </th>
+            <th className="bg-[#FFF8DC] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[180px]">
+              <div>Type of Business</div>
+              <div className="font-normal text-[10px] text-gray-600">(Food Processor, Agribusiness Operator, Packager, Distributor, Company)</div>
+            </th>
+            <th className="bg-[#FFF8DC] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[180px]">
+              <div>Primary Food Product Type</div>
+              <div className="font-normal text-[10px] text-gray-600">(Fruits & Vegetables, Grains & Pulses, Nuts & Dates)</div>
+            </th>
+            <th className="bg-[#FFF8DC] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[180px]">
+              <div>Facility Type</div>
+              <div className="font-normal text-[10px] text-gray-600">(Processing Plant, Sorting Center, Packaging Center, Packaging Center)</div>
+            </th>
+            <th className="bg-[#FFF8DC] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[150px]">
+              <div>Installed Sorting Capacity</div>
+              <div className="font-normal text-[10px] text-gray-600">(Tons per Hour)</div>
+            </th>
+            <th className="bg-[#FFF8DC] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[150px]">
+              Number of Sorting Lines
+            </th>
             {/* Contact Details */}
-            <th className="bg-[#B0E0E6] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black whitespace-nowrap min-w-[130px]">Key Contact Person</th>
-            <th className="bg-[#B0E0E6] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black whitespace-nowrap min-w-[150px]">Designation / Department</th>
-            <th className="bg-[#B0E0E6] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black whitespace-nowrap min-w-[150px]">Email Address</th>
-            <th className="bg-[#B0E0E6] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black whitespace-nowrap min-w-[140px]">Phone/ WhatsApp Number</th>
-            <th className="bg-[#B0E0E6] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black whitespace-nowrap min-w-[150px]">LinkedIn Profile</th>
-            <th className="bg-[#B0E0E6] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black whitespace-nowrap min-w-[130px]">Website URL</th>
-            {/* Needs & Pain Points */}
-            <th className="bg-[#B0E0E6] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[150px]">
-              <div>Primary Need Focus</div>
-              <div className="font-normal text-[10px] text-gray-600">(Products / Services / Both)</div>
+            <th className="bg-[#B0E0E6] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[130px]">Key Contact Person</th>
+            <th className="bg-[#B0E0E6] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[150px]">Designation/Role</th>
+            <th className="bg-[#B0E0E6] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[150px]">Email Address</th>
+            <th className="bg-[#B0E0E6] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[140px]">Phone/Whats App Number</th>
+            <th className="bg-[#B0E0E6] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[150px]">LinkedIn Profile</th>
+            <th className="bg-[#B0E0E6] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[130px]">Website URL</th>
+            {/* Procurement & Purchase Metrics */}
+            <th className="bg-[#F5F5DC] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[180px]">
+              <div>Annual Sorting Machine Procurement Budget (US$)</div>
             </th>
-            <th className="bg-[#B0E0E6] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[200px]">
-              <div>Key Product Needs</div>
-              <div className="font-normal text-[10px] text-gray-600">(doors, automation, safety, insulation, seals, etc.)</div>
+            <th className="bg-[#F5F5DC] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[180px]">
+              <div>Preferred Equipment Model</div>
+              <div className="font-normal text-[10px] text-gray-600">(OEM Direct, Distributor, Specialist)</div>
             </th>
-            <th className="bg-[#B0E0E6] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[220px]">
-              <div>Key Service Needs</div>
-              <div className="font-normal text-[10px] text-gray-600">(installation, maintenance, AMC, repair, retrofit, etc.)</div>
+            <th className="bg-[#F5F5DC] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[180px]">
+              <div>Average Procurement Lead Time (Weeks)</div>
+            </th>
+            <th className="bg-[#F5F5DC] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[180px]">
+              <div>Replacement Cycle of Machinery (Years)</div>
             </th>
           </tr>
         </thead>
@@ -358,30 +518,30 @@ export default function CustomerIntelligenceDatabase({ title }: CustomerIntellig
           {sampleCustomerData.map((customer, index) => (
             <tr key={index} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
               {/* Customer Information */}
-              <td className="border border-gray-300 px-3 py-2 text-sm text-black text-center">{customer.sNo}</td>
-              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.customerPlantOrganizationName}</td>
-              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.parentGroupHoldingCompany}</td>
-              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.country}</td>
-              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.cityIndustrialCluster}</td>
-              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.endUseIndustry}</td>
+              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.customerNameCompanyName}</td>
+              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.typeOfBusiness}</td>
+              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.primaryFoodProductType}</td>
               <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.facilityType}</td>
+              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.installedSortingCapacity}</td>
+              <td className="border border-gray-300 px-3 py-2 text-sm text-black text-center">{customer.numberOfSortingLines}</td>
               {/* Contact Details */}
               <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.keyContactPerson}</td>
-              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.designation}</td>
+              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.designationRole}</td>
               <td className="border border-gray-300 px-3 py-2 text-sm text-blue-600 hover:underline">
                 <a href={`mailto:${customer.emailAddress}`}>{customer.emailAddress}</a>
               </td>
-              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.phoneNumber}</td>
+              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.phoneWhatsAppNumber}</td>
               <td className="border border-gray-300 px-3 py-2 text-sm text-blue-600 hover:underline">
                 <a href={`https://${customer.linkedInProfile}`} target="_blank" rel="noopener noreferrer">{customer.linkedInProfile}</a>
               </td>
               <td className="border border-gray-300 px-3 py-2 text-sm text-blue-600 hover:underline">
                 <a href={`https://${customer.websiteUrl}`} target="_blank" rel="noopener noreferrer">{customer.websiteUrl}</a>
               </td>
-              {/* Needs & Pain Points */}
-              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.primaryNeedFocus}</td>
-              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.keyProductNeeds}</td>
-              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.keyServiceNeeds}</td>
+              {/* Procurement & Purchase Metrics */}
+              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.annualSortingMachineProcurementBudget}</td>
+              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.preferredEquipmentModel}</td>
+              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.averageProcurementLeadTime}</td>
+              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.replacementCycleOfMachinery}</td>
             </tr>
           ))}
         </tbody>
@@ -389,90 +549,120 @@ export default function CustomerIntelligenceDatabase({ title }: CustomerIntellig
     </div>
   )
 
-  // Preposition 3 Table - Customer Information + Contact Details + Needs & Pain Points + Purchasing Behaviour + Opportunity & Project Status + CMI Insights
+  // Proposition 3 Table - All sections
   const renderPreposition3Table = () => (
     <div className="overflow-x-auto">
       <table className="min-w-full border-collapse">
         <thead>
           <tr>
-            <th colSpan={7} className="bg-[#E8C4A0] border border-gray-300 px-3 py-2 text-center text-sm font-semibold text-black">
+            <th colSpan={6} className="bg-[#E8C4A0] border border-gray-300 px-3 py-2 text-center text-sm font-semibold text-black">
               Customer Information
             </th>
             <th colSpan={6} className="bg-[#87CEEB] border border-gray-300 px-3 py-2 text-center text-sm font-semibold text-black">
               Contact Details
             </th>
-            <th colSpan={3} className="bg-[#87CEEB] border border-gray-300 px-3 py-2 text-center text-sm font-semibold text-black">
-              Needs & Pain Points
+            <th colSpan={4} className="bg-[#E8E4C9] border border-gray-300 px-3 py-2 text-center text-sm font-semibold text-black">
+              Procurement & Purchase Metrics
             </th>
-            <th colSpan={3} className="bg-[#9370DB] border border-gray-300 px-3 py-2 text-center text-sm font-semibold text-white">
-              Purchasing Behaviour
+            <th colSpan={5} className="bg-[#E6E6FA] border border-gray-300 px-3 py-2 text-center text-sm font-semibold text-black">
+              Digital & Technology Adoption Metrics
             </th>
-            <th colSpan={3} className="bg-[#D4A574] border border-gray-300 px-3 py-2 text-center text-sm font-semibold text-black">
-              Opportunity & Project Status
+            <th colSpan={4} className="bg-[#FFE4B5] border border-gray-300 px-3 py-2 text-center text-sm font-semibold text-black">
+              Future Demand & Expansion Metrics
             </th>
-            <th colSpan={1} className="bg-[#87CEEB] border border-gray-300 px-3 py-2 text-center text-sm font-semibold text-black">
+            <th colSpan={2} className="bg-[#87CEEB] border border-gray-300 px-3 py-2 text-center text-sm font-semibold text-black">
               CMI Insights
             </th>
           </tr>
           <tr className="bg-gray-100">
             {/* Customer Information */}
-            <th className="bg-[#FFF8DC] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[60px]">S.No.</th>
-            <th className="bg-[#FFF8DC] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[180px]">Customer / Plant / Organization Name</th>
-            <th className="bg-[#FFF8DC] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[150px]">Parent Group / Holding Company</th>
-            <th className="bg-[#FFF8DC] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[100px]">Country</th>
-            <th className="bg-[#FFF8DC] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[150px]">City / Industrial Cluster</th>
-            <th className="bg-[#FFF8DC] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[150px]">End-use Industry</th>
-            <th className="bg-[#FFF8DC] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[130px]">Facility Type</th>
+            <th className="bg-[#FFF8DC] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[180px]">
+              Customer Name/Company Name
+            </th>
+            <th className="bg-[#FFF8DC] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[180px]">
+              <div>Type of Business</div>
+              <div className="font-normal text-[10px] text-gray-600">(Food Processor, Agribusiness Operator, Packager, Distributor, Company)</div>
+            </th>
+            <th className="bg-[#FFF8DC] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[180px]">
+              <div>Primary Food Product Type</div>
+              <div className="font-normal text-[10px] text-gray-600">(Fruits & Vegetables, Grains & Pulses, Nuts & Dates)</div>
+            </th>
+            <th className="bg-[#FFF8DC] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[180px]">
+              <div>Facility Type</div>
+              <div className="font-normal text-[10px] text-gray-600">(Processing Plant, Sorting Center, Packaging Center, Packaging Center)</div>
+            </th>
+            <th className="bg-[#FFF8DC] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[150px]">
+              <div>Installed Sorting Capacity</div>
+              <div className="font-normal text-[10px] text-gray-600">(Tons per Hour)</div>
+            </th>
+            <th className="bg-[#FFF8DC] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[150px]">
+              Number of Sorting Lines
+            </th>
             {/* Contact Details */}
-            <th className="bg-[#B0E0E6] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black whitespace-nowrap min-w-[130px]">Key Contact Person</th>
-            <th className="bg-[#B0E0E6] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black whitespace-nowrap min-w-[150px]">Designation / Department</th>
-            <th className="bg-[#B0E0E6] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black whitespace-nowrap min-w-[150px]">Email Address</th>
-            <th className="bg-[#B0E0E6] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black whitespace-nowrap min-w-[140px]">Phone/ WhatsApp Number</th>
-            <th className="bg-[#B0E0E6] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black whitespace-nowrap min-w-[150px]">LinkedIn Profile</th>
-            <th className="bg-[#B0E0E6] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black whitespace-nowrap min-w-[130px]">Website URL</th>
-            {/* Needs & Pain Points */}
-            <th className="bg-[#B0E0E6] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[150px]">
-              <div>Primary Need Focus</div>
-              <div className="font-normal text-[10px] text-gray-600">(Products / Services / Both)</div>
+            <th className="bg-[#B0E0E6] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[130px]">Key Contact Person</th>
+            <th className="bg-[#B0E0E6] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[150px]">Designation/Role</th>
+            <th className="bg-[#B0E0E6] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[150px]">Email Address</th>
+            <th className="bg-[#B0E0E6] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[140px]">Phone/Whats App Number</th>
+            <th className="bg-[#B0E0E6] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[150px]">LinkedIn Profile</th>
+            <th className="bg-[#B0E0E6] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[130px]">Website URL</th>
+            {/* Procurement & Purchase Metrics */}
+            <th className="bg-[#F5F5DC] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[180px]">
+              <div>Annual Sorting Machine Procurement Budget (US$)</div>
             </th>
-            <th className="bg-[#B0E0E6] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[200px]">
-              <div>Key Product Needs</div>
-              <div className="font-normal text-[10px] text-gray-600">(doors, automation, safety, insulation, seals, etc.)</div>
+            <th className="bg-[#F5F5DC] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[180px]">
+              <div>Preferred Equipment Model</div>
+              <div className="font-normal text-[10px] text-gray-600">(OEM Direct, Distributor, Specialist)</div>
             </th>
-            <th className="bg-[#B0E0E6] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[220px]">
-              <div>Key Service Needs</div>
-              <div className="font-normal text-[10px] text-gray-600">(installation, maintenance, AMC, repair, retrofit, etc.)</div>
+            <th className="bg-[#F5F5DC] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[180px]">
+              <div>Average Procurement Lead Time (Weeks)</div>
             </th>
-            {/* Purchasing Behaviour */}
-            <th className="bg-[#DDA0DD] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[200px]">
-              <div>Decision Makers</div>
-              <div className="font-normal text-[10px] text-gray-600">(facility manager, maintenance head, procurement, etc.)</div>
+            <th className="bg-[#F5F5DC] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[180px]">
+              <div>Replacement Cycle of Machinery (Years)</div>
             </th>
-            <th className="bg-[#DDA0DD] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[200px]">
-              <div>Current Supplier Setup</div>
-              <div className="font-normal text-[10px] text-gray-600">(OEM / dealers / EPC / multi-vendor / in-house)</div>
+            {/* Digital & Technology Adoption Metrics */}
+            <th className="bg-[#E6E6FA] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[180px]">
+              <div>Level of Automation</div>
+              <div className="font-normal text-[10px] text-gray-600">(Manual, Semi Automatic, Automatic)</div>
             </th>
-            <th className="bg-[#DDA0DD] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[200px]">
-              <div>Current Maintenance Model</div>
-              <div className="font-normal text-[10px] text-gray-600">(in-house / outsourced / mixed)</div>
+            <th className="bg-[#E6E6FA] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[180px]">
+              <div>AI or Machine Vision Adoption</div>
+              <div className="font-normal text-[10px] text-gray-600">(Yes/No)</div>
             </th>
-            {/* Opportunity & Project Status */}
-            <th className="bg-[#DEB887] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[180px]">
-              <div>Priority Level for Door Upgrade / Service</div>
-              <div className="font-normal text-[10px] text-gray-600">(Low / Medium / High)</div>
+            <th className="bg-[#E6E6FA] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[180px]">
+              <div>Robotics Adoption Level</div>
+              <div className="font-normal text-[10px] text-gray-600">(Low, Medium, High)</div>
             </th>
-            <th className="bg-[#DEB887] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[180px]">
-              <div>Expected Opportunity Size</div>
-              <div className="font-normal text-[10px] text-gray-600">(small / medium / large; or spend range)</div>
+            <th className="bg-[#E6E6FA] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[200px]">
+              <div>Predictive Maintenance Tools Adoption</div>
+              <div className="font-normal text-[10px] text-gray-600">(Low, Medium, High)</div>
             </th>
-            <th className="bg-[#DEB887] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[220px]">
-              <div>Planned Projects / Triggers</div>
-              <div className="font-normal text-[10px] text-gray-600">(expansion, retrofit, compliance, automation)</div>
+            <th className="bg-[#E6E6FA] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[200px]">
+              <div>Remote Monitoring and Diagnostics Capability</div>
+              <div className="font-normal text-[10px] text-gray-600">(Yes/No)</div>
+            </th>
+            {/* Future Demand & Expansion Metrics */}
+            <th className="bg-[#FFE4B5] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[200px]">
+              <div>Planned Capacity Expansion in Next 3 Years</div>
+              <div className="font-normal text-[10px] text-gray-600">(Percentage)</div>
+            </th>
+            <th className="bg-[#FFE4B5] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[200px]">
+              <div>Expected New Equipment or System Purchases in 2026-2027</div>
+            </th>
+            <th className="bg-[#FFE4B5] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[200px]">
+              <div>New Product Launch Plans</div>
+              <div className="font-normal text-[10px] text-gray-600">(Premium, Organic, snacks, frozen, etc.)</div>
+            </th>
+            <th className="bg-[#FFE4B5] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[180px]">
+              <div>New Facility Construction Planned</div>
+              <div className="font-normal text-[10px] text-gray-600">(Yes or No)</div>
             </th>
             {/* CMI Insights */}
             <th className="bg-[#B0E0E6] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[200px]">
               <div>Customer Benchmarking Summary</div>
-              <div className="font-normal text-[10px] text-gray-600">(Potential Customers / Peer Group)</div>
+              <div className="font-normal text-[10px] text-gray-600">(Potential Customers, etc.)</div>
+            </th>
+            <th className="bg-[#B0E0E6] border border-gray-300 px-3 py-2 text-left text-xs font-semibold text-black min-w-[200px]">
+              <div>Additional Comments/Next steps by sales team</div>
             </th>
           </tr>
         </thead>
@@ -480,40 +670,44 @@ export default function CustomerIntelligenceDatabase({ title }: CustomerIntellig
           {sampleCustomerData.map((customer, index) => (
             <tr key={index} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
               {/* Customer Information */}
-              <td className="border border-gray-300 px-3 py-2 text-sm text-black text-center">{customer.sNo}</td>
-              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.customerPlantOrganizationName}</td>
-              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.parentGroupHoldingCompany}</td>
-              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.country}</td>
-              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.cityIndustrialCluster}</td>
-              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.endUseIndustry}</td>
+              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.customerNameCompanyName}</td>
+              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.typeOfBusiness}</td>
+              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.primaryFoodProductType}</td>
               <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.facilityType}</td>
+              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.installedSortingCapacity}</td>
+              <td className="border border-gray-300 px-3 py-2 text-sm text-black text-center">{customer.numberOfSortingLines}</td>
               {/* Contact Details */}
               <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.keyContactPerson}</td>
-              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.designation}</td>
+              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.designationRole}</td>
               <td className="border border-gray-300 px-3 py-2 text-sm text-blue-600 hover:underline">
                 <a href={`mailto:${customer.emailAddress}`}>{customer.emailAddress}</a>
               </td>
-              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.phoneNumber}</td>
+              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.phoneWhatsAppNumber}</td>
               <td className="border border-gray-300 px-3 py-2 text-sm text-blue-600 hover:underline">
                 <a href={`https://${customer.linkedInProfile}`} target="_blank" rel="noopener noreferrer">{customer.linkedInProfile}</a>
               </td>
               <td className="border border-gray-300 px-3 py-2 text-sm text-blue-600 hover:underline">
                 <a href={`https://${customer.websiteUrl}`} target="_blank" rel="noopener noreferrer">{customer.websiteUrl}</a>
               </td>
-              {/* Needs & Pain Points */}
-              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.primaryNeedFocus}</td>
-              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.keyProductNeeds}</td>
-              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.keyServiceNeeds}</td>
-              {/* Purchasing Behaviour */}
-              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.decisionMakers}</td>
-              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.currentSupplierSetup}</td>
-              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.currentMaintenanceModel}</td>
-              {/* Opportunity & Project Status */}
-              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.priorityLevel}</td>
-              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.expectedOpportunitySize}</td>
-              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.plannedProjects}</td>
+              {/* Procurement & Purchase Metrics */}
+              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.annualSortingMachineProcurementBudget}</td>
+              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.preferredEquipmentModel}</td>
+              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.averageProcurementLeadTime}</td>
+              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.replacementCycleOfMachinery}</td>
+              {/* Digital & Technology Adoption Metrics */}
+              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.levelOfAutomation}</td>
+              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.aiOrMachineVisionAdoption}</td>
+              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.roboticsAdoptionLevel}</td>
+              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.predictiveMaintenanceTools}</td>
+              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.remoteMonitoringCapability}</td>
+              {/* Future Demand & Expansion Metrics */}
+              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.plannedCapacityExpansion}</td>
+              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.expectedNewEquipmentPurchases}</td>
+              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.newProductLaunchPlans}</td>
+              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.newFacilityConstruction}</td>
               {/* CMI Insights */}
               <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.customerBenchmarkingSummary}</td>
+              <td className="border border-gray-300 px-3 py-2 text-sm text-black">{customer.additionalComments}</td>
             </tr>
           ))}
         </tbody>
